@@ -1,0 +1,27 @@
+{
+  "name": "@accelerator_one/seven-stream",
+  "version": "1.0.0",
+  "description": "Express middleware to encrypt microservice communication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Accelerator-One/seven-stream.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "crypt"
+  ],
+  "author": "Aditya Thakur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Accelerator-One/seven-stream/issues"
+  },
+  "homepage": "https://github.com/Accelerator-One/seven-stream#readme",
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
