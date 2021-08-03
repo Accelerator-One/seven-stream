@@ -7,7 +7,8 @@ class CryptService {
   }
 
   decrypt = async (data, passwd) => {
-    return await CryptoJS.AES.decrypt(data, passwd).toString(CryptoJS.enc.Utf8);
+    let decrypted = await CryptoJS.AES.decrypt(data, passwd).toString(CryptoJS.enc.Utf8);
+    return decrypted;
   }
 }
 

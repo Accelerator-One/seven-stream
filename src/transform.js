@@ -5,7 +5,7 @@ class Transform {
   }
 
   parse = async (obj, callback, password) => {
-    return await callback(JSON.parse(obj), password);
+    return await JSON.parse(await callback(obj, password));
   }
 
 }

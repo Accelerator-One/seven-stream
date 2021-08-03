@@ -7,12 +7,12 @@ class SevenStream {
     this.password = '';
   }
 
-  encrypt = (opts) => {
+  seven = (opts) => {
     return async (req, res, next) => {
 
-      if (opts['password'] === undefined)
+      if (opts['secret'] === undefined)
         throw new Error('ERR: password parameter not supplied');
-      this.password = opts.password;
+      this.password = opts.secret;
 
       switch (req.method) {
 
@@ -21,7 +21,7 @@ class SevenStream {
         case 'PATCH':
 
           if ('cipher' in req.body)
-            req.body['cipher'] = await parse(req.body['cipher'], crypt.encrypt, opts.password);
+            req.body['cipher'] = await parse(req.body['cipher'], crypt.decrypt, this.password);
 
       }
 
@@ -29,12 +29,12 @@ class SevenStream {
     }
   }
 
-  decrypt = async (body) => {
+  encrypt = async (body) => {
 
     if (!('cipher' in body))
       return body;
 
-    body['cipher'] = await stringify(body['cipher'], crypt.decrypt, this.password);
+    body['cipher'] = await stringify(body['cipher'], crypt.encrypt, this.password);
     return body;
   }
 
@@ -42,4 +42,4 @@ class SevenStream {
 
 const streamObj = new SevenStream();
 module.exports.encrypt = streamObj.encrypt;
-module.exports.decrypt = streamObj.decrypt;
+module.exports.seven = streamObj.seven;

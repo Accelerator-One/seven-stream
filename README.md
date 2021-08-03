@@ -3,25 +3,38 @@ Express middleware to encrypt microservice communication
 
 ### Example
 ```javascript
+// Initialization
 const express = require('express');
-const { encrypt, decrypt } = require('@accelerator_one/seven-stream');
+const { seven, encrypt } = require('@accelerator_one/seven-stream');
 
 let app = express();
 app.use(express.json({
   type: 'application/json'
 }));
 
-app.use(encrypt({
-  password: 'ASDFJKLI'
+// Encrypted data
+app.use(seven({
+  secret: /* SECRET KEY HERE */
 }));
 
+
+// Usage
 app.post('/', async (req, res) => {
-  let data = await decrypt(req.body);
-  console.log("C", data);
-  res.json(data);
+
+  /*
+    - Data available in decrypted format in this scope
+    - Cryptography applied only on 'cipher' key. Nest the sensitive data here 
+    - Use `encrypt` method if you need to return data back in encrypted format
+  */  
+
+  let data = await encrypt(req.body);
+  return res.json(data);
 });
 
-app.listen(8080, () => {
-  console.log('Listening on port 8080!');
+
+let port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`INFO: Listening in port ${8080}`);
 });
+
 ```
