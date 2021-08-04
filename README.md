@@ -1,15 +1,15 @@
 # Seven stream
-Express middleware to encrypt communication b/w microservices
+Express middleware to encrypt communication b/w microservices on the application layer
 
 <br/>
 
-<img src='./src/icon.png' width=320 height=320 style="padding: 4em;">
+<img src='./src/icon.png' width=320 height=320 />
 
 <br/>
 
 ### Usage
 
-- Complete object under *cipher* is recieved as an encrypted string by the server.  
+- Complete object under *cipher* key is recieved as an encrypted string by the server.  
 This is where all your sensitive data is present.
 
 - This data will be available inside URI scope in decrypted format.
@@ -19,7 +19,7 @@ This is where all your sensitive data is present.
 - All your microservices will need to be initialized with same secret key.
 
 - Any tampered response will flag an error, since JSON schema will break.  
-  In such cases, an empty string will be returned after descryption.
+  In such cases, an empty string will be returned after decryption.
 
 <br/>
 
@@ -62,3 +62,8 @@ app.listen(port, () => {
 });
 
 ```
+
+<br/>
+
+### Issues
+In case of any problems, please mark them under *Issues* section of this repository.
