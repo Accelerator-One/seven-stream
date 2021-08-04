@@ -3,6 +3,10 @@ Express middleware to encrypt communication b/w microservices
 
 <br/>
 
+<img src='./src/icon.png' width=320 height=320 style="padding: 4em;">
+
+<br/>
+
 ### Usage
 
 - Complete object under *cipher* is recieved as an encrypted string by the server.  
