@@ -3,13 +3,17 @@ const CryptoJS = require('crypto-js');
 class CryptService {
 
   encrypt = async (data, passwd) => {
+
+    if(data === '')
+      return '';
+
     return await CryptoJS.AES.encrypt(JSON.stringify(data), passwd).toString();
   }
 
   decrypt = async (data, passwd) => {
-    let decrypted = await CryptoJS.AES.decrypt(data, passwd).toString(CryptoJS.enc.Utf8);
-    return decrypted;
+    return await CryptoJS.AES.decrypt(data, passwd).toString(CryptoJS.enc.Utf8);
   }
+
 }
 
 let cryptObj = new CryptService();

@@ -5,7 +5,16 @@ class Transform {
   }
 
   parse = async (obj, callback, password) => {
-    return await JSON.parse(await callback(obj, password));
+    let data = '';
+    
+    try {
+      data = await JSON.parse(await callback(obj, password));
+    }
+    catch (err) {
+      console.error(`Tampered: ${Date.now()}: ${obj}`);
+    }
+
+    return data;
   }
 
 }
